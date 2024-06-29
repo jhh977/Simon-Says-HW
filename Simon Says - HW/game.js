@@ -3,6 +3,7 @@ let gamePattern = [];
 let userClickedPattern = []
 let started = false
 let level = 0
+let index = 0;
 
 document.addEventListener('keypress', () => {
 
@@ -25,7 +26,7 @@ function nextSequence(){
     let rand = getRandomInt(4);
     gamePattern.push(buttonColors[rand]);
     keyPress(document.getElementById(buttonColors[rand]))
-
+    
 }
 
 
@@ -34,7 +35,19 @@ let buttons = document.querySelectorAll('div[type="button"]')
 
     buttons.forEach(element => {
         element.addEventListener('click', function() {
-                keyPress(element);   
+            
+            if(element.id == gamePattern[index]){
+                keyPress(element)
+                index ++
+                if(index == gamePattern.length){
+                    setTimeout(()=>{nextSequence()},1000)
+                    
+                    index =0
+                }
+            }else(
+                fail()
+            )
+            
         })
         
     });
