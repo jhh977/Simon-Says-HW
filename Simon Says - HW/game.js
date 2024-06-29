@@ -13,3 +13,26 @@ document.addEventListener('keypress', () => {
     }
 })
 
+
+
+
+
+let buttons = document.querySelectorAll('div[type="button"]')
+
+    buttons.forEach(element => {
+        element.addEventListener('click', function() {
+            keyPress(element)
+            
+        })
+        
+    });
+    function keyPress(element){
+        const old = element.className;
+            element.classList = 'btn pressed';
+            let btnId  = element.id;
+            var audio = new Audio('sounds/'+btnId+'.mp3');
+            audio.play();
+            setTimeout(() => {
+                element.classList = old;
+            }, 100);
+    }
