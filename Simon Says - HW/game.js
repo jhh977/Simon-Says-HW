@@ -14,12 +14,12 @@ document.addEventListener('keypress', () => {
     }
 })
 
-
+// generate random number
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
   
-
+//main function
 function nextSequence(){
     level++;
     document.querySelector("#level-title").textContent = `Level ${level}`
@@ -30,14 +30,13 @@ function nextSequence(){
 }
 
 
-
+//on click checking answer
 let buttons = document.querySelectorAll('div[type="button"]')
 
     buttons.forEach(element => {
         element.addEventListener('click', function() {
-            
+            keyPress(element)
             if(element.id == gamePattern[index]){
-                keyPress(element)
                 index ++
                 if(index == gamePattern.length){
                     setTimeout(()=>{nextSequence()},1000)
@@ -51,7 +50,7 @@ let buttons = document.querySelectorAll('div[type="button"]')
         })
         
     });
-
+// fail screen effect + restart the game
     function fail(){
         let body = document.querySelector('body')
         body.classList.toggle('game-over');
@@ -66,7 +65,7 @@ let buttons = document.querySelectorAll('div[type="button"]')
             body.classList.toggle('game-over')
         }, 100);
     }
-
+// Buttons effect 
     function keyPress(element){
         const oldClass = element.className;
             element.classList = 'btn pressed';
