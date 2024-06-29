@@ -14,6 +14,19 @@ document.addEventListener('keypress', () => {
 })
 
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  
+
+function nextSequence(){
+    level++;
+    document.querySelector("#level-title").textContent = `Level ${level}`
+    let rand = getRandomInt(4);
+    gamePattern.push(buttonColors[rand]);
+    keyPress(document.getElementById(buttonColors[rand]))
+
+}
 
 
 
