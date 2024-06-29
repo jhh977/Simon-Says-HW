@@ -34,18 +34,33 @@ let buttons = document.querySelectorAll('div[type="button"]')
 
     buttons.forEach(element => {
         element.addEventListener('click', function() {
-            keyPress(element)
-            
+                keyPress(element);   
         })
         
     });
+
+    function fail(){
+        let body = document.querySelector('body')
+        body.classList.toggle('game-over');
+        var audio = new Audio('sounds/wrong.mp3')
+        audio.play();
+        document.querySelector("#level-title").textContent = `Game Over, Press Any Key To Restart`
+        level = 0
+        gamePattern = []
+        started = false
+        setTimeout(() => {
+            body.classList.toggle('game-over')
+        }, 100);
+    }
+
     function keyPress(element){
-        const old = element.className;
+        const oldClass = element.className;
             element.classList = 'btn pressed';
             let btnId  = element.id;
             var audio = new Audio('sounds/'+btnId+'.mp3');
+
             audio.play();
             setTimeout(() => {
-                element.classList = old;
+                element.classList = oldClass;
             }, 100);
     }
