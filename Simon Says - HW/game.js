@@ -61,6 +61,7 @@ let buttons = document.querySelectorAll('div[type="button"]')
         level = 0
         gamePattern = []
         started = false
+        index = 0
         setTimeout(() => {
             body.classList.toggle('game-over')
         }, 100);
